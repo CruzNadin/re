@@ -15,13 +15,15 @@ import {
   TouchableHighlight,
   DatePickerAndroid,
   TimePickerAndroid,
-  DatePickerIOS,
   Platform,
   Animated,
   Keyboard
 } from 'react-native';
 import Style from './style';
 import Moment from 'moment';
+
+import DatePickerIOS from '@react-native-community/datetimepicker';
+import { display } from 'styled-system';
 
 const FORMATS = {
   'date': 'YYYY-MM-DD',
@@ -192,10 +194,11 @@ class DatePicker extends Component {
     );
   }
 
-  onDateChange(date) {
+  onDateChange(event, selectedDate) {
+    const currentDate = selectedDate || date;
     this.setState({
       allowPointerEvents: false,
-      date: date
+      date: currentDate
     });
     const timeoutId = setTimeout(() => {
       this.setState({
@@ -373,11 +376,10 @@ class DatePicker extends Component {
                   >
                     <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DatePickerIOS
-                        date={this.state.date}
+                        value={this.state.date}
+                        display={display}
                         mode={mode}
-                        minimumDate={minDate && this.getDate(minDate)}
-                        maximumDate={maxDate && this.getDate(maxDate)}
-                        onDateChange={this.onDateChange}
+                        onChange={this.onDateChange}
                         minuteInterval={minuteInterval}
                         timeZoneOffsetInMinutes={timeZoneOffsetInMinutes ? timeZoneOffsetInMinutes : null}
                         style={[Style.datePicker, customStyles.datePicker]}
@@ -448,6 +450,8 @@ DatePicker.propTypes = {
   format: PropTypes.string,
   minDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
   maxDate: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
+  display: PropTypes.string ,
+  is24Hour: PropTypes.bool,
   height: PropTypes.number,
   duration: PropTypes.number,
   confirmBtnText: PropTypes.string,
@@ -461,7 +465,6 @@ DatePicker.propTypes = {
   onPressMask: PropTypes.func,
   placeholder: PropTypes.string,
   modalOnResponderTerminationRequest: PropTypes.func,
-  is24Hour: PropTypes.bool,
   getDateStr: PropTypes.func,
   locale: PropTypes.string
 };
