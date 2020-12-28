@@ -24,6 +24,11 @@ if (@available(iOS 14, *)) {
 }
 
 ```
+⚡ **npm run pod**
+
+```bash
+npx pod-install ios
+```
 
 ![android](http://xgfe.github.io/react-native-datepicker/img/react-native-datepicker-android.gif)
 ![ios](http://xgfe.github.io/react-native-datepicker/img/react-native-datepicker-ios.gif)
@@ -32,14 +37,7 @@ if (@available(iOS 14, *)) {
   
 ```javascript
 
-import React, { Component } from 'react'
 import DatePicker from 'react-native-datepicker'
-
-export default class MyDatePicker extends Component {
-  constructor(props){
-    super(props)
-    this.state = {date:"2016-05-15"}
-  }
 
   render(){
     return (
@@ -49,6 +47,10 @@ export default class MyDatePicker extends Component {
         mode="date"
         placeholder="select date"
         format="DD-MM-YYYY"
+        display="spinner"
+        is24Hour={false}
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
         customStyles={{
           dateInput: {
             marginLeft: 36
@@ -70,10 +72,8 @@ export default class MyDatePicker extends Component {
 | mode | 'date' | `enum` | The `enum` of `date`, `datetime` and `time` |
 | androidMode | 'default' | `enum` | The `enum` of `default`, `calendar` and `spinner` (only Android) |
 | format | 'YYYY-MM-DD' | `string` | Specify the display format of the date, which using [moment.js](http://momentjs.com/). The default value change according to the mode. |
-| confirmBtnText | '确定' | `string` | Specify the text of confirm btn in ios. |
-| cancelBtnText | '取消' | `string` | Specify the text of cancel btn in ios. |
-| minDate | - | <code>string &#124; date</code> | Restricts the range of possible date values. |
-| maxDate | - | <code>string &#124; date</code> | Restricts the range of possible date values. |
+| confirmBtnText | 'Confirm' | `string` | Specify the text of confirm btn in ios. |
+| cancelBtnText | 'Cancel' | `string` | Specify the text of cancel btn in ios. |
 | duration | 300 | `number` | Specify the animation duration of datepicker.|
 | customStyles | - | `object` | The hook of customize datepicker style, same as the native style. `dateTouchBody`, `dateInput`...|
 | hideText | false | `boolean` | Controller whether or not show the `dateText` |
