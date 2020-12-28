@@ -191,7 +191,6 @@ class DatePickerNative extends Component {
   }
 
   onDateChange(event, selectedDate) {
-    console.log(event);
     const { date } = this.props;
     const currentDate = selectedDate || date;
     this.setState({
