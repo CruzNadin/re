@@ -5,26 +5,18 @@
 
 Talk to us about more commands if you need
 
-![visitors](https://visitor-badge.glitch.me/badge?page_id=react-native-cn-datepicker.CruzNadin)
+![visitors](https://visitor-badge.glitch.me/badge?page_id=react-native-cn-datepicker)
 
-
-⚡ **npm i react-native-cn-datepicker**
+⚡ **Install**
   
 ```bash
 npm i react-native-cn-datepicker
 ```
-
-⚡ **For IOS users**
-  
-  - Xcode Open.
-  - Add below code in didFinishLaunching function in appdelegate.m 
+or
 ```bash
-if (@available(iOS 14, *)) {
-  UIDatePicker *picker = [UIDatePicker appearance];
-  picker.preferredDatePickerStyle = UIDatePickerStyleWheels;
-}
-
+yarn add react-native-cn-datepicker
 ```
+
 ⚡ **npm run pod**
 
 ```bash
@@ -38,7 +30,7 @@ npx pod-install ios
   
 ```javascript
 
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-cn-datepicker'
 
   render(){
     return (
@@ -53,6 +45,13 @@ import DatePicker from 'react-native-datepicker'
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         customStyles={{
+          placeholderText: {
+            fontSize: 18,
+            color: "#48515B"
+          },
+          dateText:{
+            fontSize: 18
+          },
           dateInput: {
             marginLeft: 36
           }
@@ -60,6 +59,7 @@ import DatePicker from 'react-native-datepicker'
         onDateChange={(date) => {
             console.log(date);
         }}
+        locale={"en"} // Default en
       />
     )
   }
@@ -78,6 +78,8 @@ import DatePicker from 'react-native-datepicker'
 | duration | 300 | `number` | Specify the animation duration of datepicker.|
 | customStyles | - | `object` | The hook of customize datepicker style, same as the native style. `dateTouchBody`, `dateInput`...|
 | hideText | false | `boolean` | Controller whether or not show the `dateText` |
+| minDate | - | `string | date` | Restricts the range of possible date values. |
+| maxDate | - | `string | date	` | Restricts the range of possible date values. |
 | disabled | false | `boolean` | Controller whether or not disable the picker |
 | is24Hour | - | `boolean` | Set the TimePicker is24Hour flag. The default value depend on `format`. Only work in Android |
 | allowFontScaling | true | `boolean` | Set to false to disable font scaling for every text component |

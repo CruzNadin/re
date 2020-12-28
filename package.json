@@ -1,6 +1,6 @@
 {
   "name": "react-native-cn-datepicker",
-  "version": "1.1.1",
+  "version": "1.1.6",
   "description": "React Native DatePicker component for both Android and iOS, useing DatePickerAndroid, TimePickerAndroid and DatePickerIOS",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,8 @@
     "url": "git+https://github.com/CruzNadin/react-native-cn-datepicker.git"
   },
   "dependencies": {
-    "moment": "^2.22.0",
-    "@react-native-community/datetimepicker": "^3.0.8"
+    "@react-native-community/datetimepicker": "^3.0.8",
+    "moment": "^2.22.0"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
